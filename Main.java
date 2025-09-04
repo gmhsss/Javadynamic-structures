@@ -1,14 +1,17 @@
-import java.util.Scanner;
-import java.util.Random;
+import java.util.Scanner;   // importo o scanner para ler dados do teclado
+import java.util.Random;    // importo o random para gerar números aleatórios
 
+// classe nó: é a base da lista encadeada
 class No {
-    int valor;
-    No prox;
+    int valor;   // guarda o valor (tipo primitivo int)
+    No prox;     // referência para o próximo nó
 }
 
+// classe pilha (estrutura LIFO)
 class Pilha {
-    private No topo = null;
+    private No topo = null; // ponteiro para o topo da pilha
 
+    // insere um valor na pilha
     public void insere(int v) {
         No n = new No();
         n.valor = v;
@@ -16,6 +19,7 @@ class Pilha {
         topo = n;
     }
 
+    // remove o elemento do topo e mostra qual foi
     public int remove() {
         if (topo == null) {
             System.out.println("Pilha vazia. Nenhum elemento removido.");
@@ -27,6 +31,7 @@ class Pilha {
         return removido;
     }
 
+    // imprime todos os elementos da pilha
     public void imprime() {
         if (topo == null) {
             System.out.println("Pilha vazia.");
@@ -45,16 +50,18 @@ class Pilha {
     }
 }
 
+// classe fila (estrutura FIFO)
 class Fila {
-    private No inicio = null;
-    private No fim = null;
+    private No inicio = null; // ponteiro para o primeiro elemento
+    private No fim = null;    // ponteiro para o último elemento
 
+    // insere um elemento no fim da fila
     public void insere(int v) {
         No n = new No();
         n.valor = v;
         n.prox = null;
 
-        if (inicio == null) {
+        if (inicio == null) { // fila estava vazia
             inicio = n;
             fim = n;
         } else {
@@ -63,6 +70,7 @@ class Fila {
         }
     }
 
+    // remove o elemento do início e mostra qual foi
     public int remove() {
         if (inicio == null) {
             System.out.println("Fila vazia. Nenhum elemento removido.");
@@ -77,6 +85,7 @@ class Fila {
         return removido;
     }
 
+    // imprime todos os elementos da fila
     public void imprime() {
         if (inicio == null) {
             System.out.println("Fila vazia.");
@@ -95,14 +104,16 @@ class Fila {
     }
 }
 
+// programa principal com menu
 public class Main {
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        Random rand = new Random();
+        Scanner in = new Scanner(System.in); // leitura do teclado
+        Random rand = new Random();          // números aleatórios
         Pilha pilha = new Pilha();
         Fila fila = new Fila();
 
         while (true) {
+            // menu principal
             System.out.println();
             System.out.println("Selecione a estrutura:");
             System.out.println("1 Pilha");
@@ -120,6 +131,7 @@ public class Main {
                 continue;
             }
 
+            // menu de operações
             System.out.println();
             System.out.println("Operacao:");
             System.out.println("1 Inserir elemento manualmente");
@@ -128,7 +140,7 @@ public class Main {
             System.out.println("4 Imprimir estrutura");
             int op = lerOpcao(in);
 
-            if (estrutura == 1) {
+            if (estrutura == 1) { // se for pilha
                 if (op == 1) {
                     System.out.print("Informe um inteiro para inserir na pilha: ");
                     int v = lerInteiro(in);
@@ -143,7 +155,7 @@ public class Main {
                 } else if (op == 4) {
                     pilha.imprime();
                 }
-            } else {
+            } else { // se for fila
                 if (op == 1) {
                     System.out.print("Informe um inteiro para inserir na fila: ");
                     int v = lerInteiro(in);
@@ -164,6 +176,7 @@ public class Main {
         in.close();
     }
 
+    // lê uma opção inteira, ou retorna -1 se não for válida
     private static int lerOpcao(Scanner in) {
         if (!in.hasNextInt()) {
             in.next();
@@ -172,6 +185,7 @@ public class Main {
         return in.nextInt();
     }
 
+    // lê um inteiro válido do usuário
     private static int lerInteiro(Scanner in) {
         while (!in.hasNextInt()) {
             System.out.print("Número inválido. Informe um inteiro: ");
@@ -180,6 +194,7 @@ public class Main {
         return in.nextInt();
     }
 
+    // gera um número aleatório entre 1 e 99
     private static int gerarAleatorio(Random r) {
         return r.nextInt(99) + 1;
     }
