@@ -1,5 +1,5 @@
 # Sistema de Gerenciamento de Atendimento ao Cliente  
-Gestão de solicitações com **Fila** e **Pilha** implementadas sobre **Lista Encadeada própria**, em Java. Projeto pensado para disciplinas de Estruturas de Dados e Resolução de Problemas, com foco em autoria, clareza e comprovação de domínio do conteúdo.  
+Gestão de solicitações com **Fila** e **Pilha** implementadas sobre **Lista Encadeada própria**, em Java. 
 
 <p align="center">
   <img src="https://img.shields.io/badge/Java-17%2B-blue" />
